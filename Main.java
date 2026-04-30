@@ -21,7 +21,7 @@ public class Main {
 
             try {
                 int choix = scanner.nextInt();
-                scanner.nextLine(); // Consommer le retour à la ligne
+                scanner.nextLine();
 
                 switch (choix) {
                     case 1 -> {
@@ -51,7 +51,7 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("❌ Erreur : Veuillez entrer un nombre valide.");
-                scanner.nextLine(); // Nettoyer le tampon
+                scanner.nextLine();
             }
         }
         scanner.close();
