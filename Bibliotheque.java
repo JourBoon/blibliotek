@@ -26,20 +26,23 @@ public class Bibliotheque {
     }
 
     public void displayCollection(){
-        List<Livre> displayList = this.COLLECTION;
-        
+        System.out.println("TITRE, AUTEUR, ID, EXEMPLAIRES : ");
+
+        for(Livre books : this.getBookCollection()){
+            System.out.println(books.getTitre() + ", " + books.getAuteur() + ", ID : " + books.getID() + ", Exemplaires : " + this.countBook(books));
+        }
+    }
+
+    public List<Livre> getBookCollection(){
+        List<Livre> bookList = this.COLLECTION;
 
         for(Livre books : this.COLLECTION){
-            if(!displayList.contains(books)){
-                displayList.add(books);
+            if(!bookList.contains(books)){
+                bookList.add(books);
             }
         }
 
-        System.out.println("TITRE, AUTEUR, ID, EXEMPLAIRES : ");
-
-        for(Livre books : displayList){
-            System.out.println(books.getTitre() + ", " + books.getAuteur() + ", ID : " + books.getID() + ", Exemplaires : " + this.countBook(books));
-        }
+        return bookList;
     }
 
     public List<Livre> getCollection(){
