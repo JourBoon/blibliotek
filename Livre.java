@@ -1,49 +1,43 @@
 public class Livre {
-    
-    private final int ID;
-    private final String AUTEUR;
-    private final String TITRE;
-    private boolean disponibilite;
-    
-    public Livre(final String ID, final String AUTEUR, final String TITRE){
-        private static int compteur = 1;
-private String id;
 
-public Livre(String titre, String auteur) {
-    this.id = "LIV-" + String.format("%03d", compteur++);
-};
-        this.AUTEUR = AUTEUR;
-        this.TITRE = TITRE;
-        this.disponibilite = true;
-    }
+    private static int compteur = 1;
+
+    private final String id;
+    private final String auteur;
+    private final String titre;
     
-    public Integer getID() {
-        return this.ID;
-  
+    private boolean disponible;
+
+    public Livre(String titre, String auteur) {
+        this.id = "LIV-" + String.format("%03d", compteur++);
+        this.titre = titre;
+        this.auteur = auteur;
+        this.disponible = true; 
+    
+    public String getId() {
+        return id;
     }
 
     public String getAuteur() {
-        return this.AUTEUR;
-  
+        return auteur;
     }
 
     public String getTitre() {
-        return this.TITRE;
-  
-    }
-    
-    public boolean isDisponibilite() {
-        return this.disponibilite;
-  
+        return titre;
     }
 
-    public void setDisponibilite(boolean disponibilite) {
-        this.disponibilite = disponibilite;
+    public boolean isDisponible() {
+        return disponible;
     }
-    
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
     @Override
     public String toString() {
-        return String.format("[%s] %s - %s (%s)", 
-            id, titre, auteur, (disponibilite ? "Dispo" : "Emprunté"));
+        String statut = disponible ? "Disponible" : "Emprunté";
+        return String.format("[%s] %-20s | %-15s | Statut: %s", 
+                             id, titre, auteur, statut);
     }
 }
