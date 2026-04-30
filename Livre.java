@@ -1,15 +1,15 @@
-public class Livre (
+public class Livre {
     private final int ID;
     private final String AUTEUR;
     private final String TITRE;
 
-    public Livre(final int ID, final string AUTEUR, finals= string TITRE ){
+    public Livre(final int ID, final String AUTEUR, final String TITRE){
         this.ID = ID;
-        this.Auteur = AUTEUR;
-        this.Titre = TITRE;
+        this.AUTEUR = AUTEUR;
+        this.TITRE = TITRE;
     }
     
-    public String getID() {
+    public Integer getID() {
         return this.ID;
   
     }
@@ -23,4 +23,4 @@ public class Livre (
         return this.TITRE;
   
     }   
-)
+}
