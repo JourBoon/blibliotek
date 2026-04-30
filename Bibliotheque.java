@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,26 +9,9 @@ public class Bibliotheque {
         this.COLLECTION = new ArrayList<>();
     }
 
-    public int countStock(){
-        return this.COLLECTION.size();
-    }
-
-    public int countBook(Livre book){
-        int count = 0;
-
-        for(Livre books : this.COLLECTION){
-            if(books.equals(book))
-                count++;
-        }
-        
-        return count;
-    }
-
     public void displayCollection(){
-        System.out.println("TITRE, AUTEUR, ID, EXEMPLAIRES : ");
-
         for(Livre books : this.getBookCollection()){
-            System.out.println(books.getTitre() + ", " + books.getAuteur() + ", ID : " + books.getID() + ", Exemplaires : " + this.countBook(books));
+            System.out.println(books.toString());
         }
     }
 
@@ -45,11 +27,57 @@ public class Bibliotheque {
         return bookList;
     }
 
+    public void findBook(String search){
+        boolean positiveResult = false;
+
+        System.out.println("\nRésultat de votre recherche :");
+
+        for(Livre books : this.getBookCollection()){
+            if(books.getAuteur().contains(search) || books.getID().contains(search) || books.getTitre().contains(search)) {
+                System.out.println(books.toString());
+                positiveResult = true;
+            }
+        }
+
+        if(!positiveResult) {
+            System.out.println("Aucun résultat correspondant.");
+        }
+    }
+
+    public Livre findBookByID(String id){
+        for(Livre book : this.getBookCollection()){
+            if(book.getID().equals(id))
+                return book;
+        }
+
+        return null;
+    }
+
+    public void borrowBook(String id){
+        Livre book = this.findBookByID(id);
+        if(book == null){
+            System.out.println("\nCette action n'a pas pu être effectuée.");
+        } else {
+            book.setDisponible(false);
+            System.out.println("Le livre '" + book.getTitre() + "', vient d'être emprunté.");
+        }
+    }
+
+    public void unborrowBook(String id){
+        Livre book = this.findBookByID(id);
+        if(book == null){
+            System.out.println("\nCette action n'a pas pu être effectuée.");
+        } else {
+            book.setDisponible(true);
+            System.out.println("Le livre '" + book.getTitre() + "', est à nouveau disponible.");
+        }
+    }
+
     public List<Livre> getCollection(){
         return this.COLLECTION;
     }
 
-    public void addBook(Livre book, int amount){
+    public void addBook(Livre book){
         this.COLLECTION.add(book);
     }
 

@@ -2,32 +2,33 @@ public class Livre {
 
     private static int compteur = 1;
 
-    private final String id;
-    private final String auteur;
-    private final String titre;
+    private final String ID;
+    private final String AUTEUR;
+    private final String TITRE;
     
     private boolean disponible;
 
     public Livre(String titre, String auteur) {
-        this.id = "LIV-" + String.format("%03d", compteur++);
-        this.titre = titre;
-        this.auteur = auteur;
+        this.ID = "LIV-" + String.format("%03d", compteur++);
+        this.TITRE = titre;
+        this.AUTEUR = auteur;
         this.disponible = true; 
-    
-    public String getId() {
-        return id;
+    }
+
+    public String getID() {
+        return this.ID;
     }
 
     public String getAuteur() {
-        return auteur;
+        return this.AUTEUR;
     }
 
     public String getTitre() {
-        return titre;
+        return this.TITRE;
     }
 
     public boolean isDisponible() {
-        return disponible;
+        return this.disponible;
     }
 
     public void setDisponible(boolean disponible) {
@@ -36,8 +37,8 @@ public class Livre {
 
     @Override
     public String toString() {
-        String statut = disponible ? "Disponible" : "Emprunté";
+        String statut = this.disponible ? "Disponible" : "Emprunté";
         return String.format("[%s] %-20s | %-15s | Statut: %s", 
-                             id, titre, auteur, statut);
+                             this.ID, this.TITRE, this.AUTEUR, statut);
     }
 }
