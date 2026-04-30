@@ -1,8 +1,9 @@
 public class Livre {
+    
     private final int ID;
     private final String AUTEUR;
     private final String TITRE;
-    private boolean Disponibilite;
+    private boolean disponibilite;
     
     public Livre(final int ID, final String AUTEUR, final String TITRE){
         this.ID = ID;
