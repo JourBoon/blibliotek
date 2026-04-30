@@ -5,8 +5,13 @@ public class Livre {
     private final String TITRE;
     private boolean disponibilite;
     
-    public Livre(final int ID, final String AUTEUR, final String TITRE){
-        this.ID = ID;
+    public Livre(final String ID, final String AUTEUR, final String TITRE){
+        private static int compteur = 1;
+private String id;
+
+public Livre(String titre, String auteur) {
+    this.id = "LIV-" + String.format("%03d", compteur++);
+};
         this.AUTEUR = AUTEUR;
         this.TITRE = TITRE;
         this.disponibilite = true;
@@ -34,5 +39,11 @@ public class Livre {
 
     public void setDisponibilite(boolean disponibilite) {
         this.disponibilite = disponibilite;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("[%s] %s - %s (%s)", 
+            id, titre, auteur, (disponibilite ? "Dispo" : "Emprunté"));
     }
 }
